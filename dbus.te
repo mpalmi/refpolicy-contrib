@@ -31,7 +31,7 @@ typealias session_dbusd_tmp_t alias { auditadm_dbusd_tmp_t secadm_dbusd_tmp_t };
 userdom_user_tmp_file(session_dbusd_tmp_t)
 
 type system_dbusd_t;
-init_socket_daemon_domain(system_dbusd_t, dbusd_exec_t, system_dbusd_var_run_t)
+init_system_domain(system_dbusd_t, dbusd_exec_t)
 
 type system_dbusd_tmp_t;
 files_tmp_file(system_dbusd_tmp_t)
