@@ -142,7 +142,7 @@ interface(`sendmail_dontaudit_rw_tcp_sockets',`
 ########################################
 ## <summary>
 ##	Read and write sendmail unix
-##	domain stream sockets.
+##	domain stream sockets. (Deprecated)
 ## </summary>
 ## <param name="domain">
 ##	<summary>
@@ -155,7 +155,47 @@ interface(`sendmail_rw_unix_stream_sockets',`
 		type sendmail_t;
 	')
 
+	refpolicywarn(`$0($1) has been deprecated, please use sendmail_rw_stream_sockets() instead.')
+	sendmail_rw_stream_sockets($1)
+')
+
+########################################
+## <summary>
+##	Read and write sendmail unix
+##	domain stream sockets.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`sendmail_rw_stream_sockets',`
+	gen_require(`
+		type sendmail_t;
+	')
+
 	allow $1 sendmail_t:unix_stream_socket rw_socket_perms;
+')
+
+########################################
+## <summary>
+##	Read and write sendmail unix
+##	domain stream sockets. (Deprecated)
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`sendmail_dontaudit_rw_unix_stream_sockets',`
+	gen_require(`
+		type sendmail_t;
+	')
+
+	refpolicywarn(`$0($1) has been deprecated, please use sendmail_dontaudit_rw_stream_sockets() instead.')
+	sendmail_dontaudit_rw_stream_sockets($1)
 ')
 
 ########################################
@@ -169,7 +209,7 @@ interface(`sendmail_rw_unix_stream_sockets',`
 ##	</summary>
 ## </param>
 #
-interface(`sendmail_dontaudit_rw_unix_stream_sockets',`
+interface(`sendmail_dontaudit_rw_stream_sockets',`
 	gen_require(`
 		type sendmail_t;
 	')

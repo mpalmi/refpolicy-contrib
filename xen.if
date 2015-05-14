@@ -198,7 +198,7 @@ interface(`xen_read_xenstored_pid_files',`
 ########################################
 ## <summary>
 ##	Do not audit attempts to read and write
-##	Xen unix domain stream sockets.
+##	Xen unix domain stream sockets. (Deprecated)
 ## </summary>
 ## <param name="domain">
 ##	<summary>
@@ -207,6 +207,26 @@ interface(`xen_read_xenstored_pid_files',`
 ## </param>
 #
 interface(`xen_dontaudit_rw_unix_stream_sockets',`
+	gen_require(`
+		type xend_t;
+	')
+
+	refpolicywarn(`$0($1) has been deprecated, please use xen_dontaudit_rw_stream_sockets() instead.')
+	xen_dontaudit_rw_stream_sockets($1)
+')
+
+########################################
+## <summary>
+##	Do not audit attempts to read and write
+##	Xen unix domain stream sockets.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain to not audit.
+##	</summary>
+## </param>
+#
+interface(`xen_dontaudit_rw_stream_sockets',`
 	gen_require(`
 		type xend_t;
 	')

@@ -134,7 +134,7 @@ optional_policy(`
 	sendmail_domtrans(procmail_t)
 	sendmail_signal(procmail_t)
 	sendmail_dontaudit_rw_tcp_sockets(procmail_t)
-	sendmail_dontaudit_rw_unix_stream_sockets(procmail_t)
+	sendmail_dontaudit_rw_stream_sockets(procmail_t)
 ')
 
 optional_policy(`
